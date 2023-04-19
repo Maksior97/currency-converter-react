@@ -1,6 +1,6 @@
 import { useState } from "react";
-import currencies from "..currencies";
-import Total from "..Total";
+import currencies from "../currencies";
+import Total from "../Total";
 import "./style.css";
 
 const Form = ({calculateTotal, total}) => {
