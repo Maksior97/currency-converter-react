@@ -1,16 +1,13 @@
-import { useState } from "react";
 import Container from "./Container";
-import { currencyTable } from "./currencyTable";
 import Form from "./Form";
-import Total from "./Result";
+import { useState } from "react";
+import currencies from "./currencies";
 
 function App() {
   const [total, setTotal] = useState();
-
+  
   const calculateTotal = (sum, currency) => {
-    const rate = currencyTable
-    .find(({symbol}) => symbol === currency)
-    .rate;
+     const rate = currencies.find(({symbol}) => symbol === currency).rate;
 
     setTotal({
       targetSum: sum * rate,
@@ -21,11 +18,9 @@ function App() {
 
   return (
       <Container>
-        <Form 
-        calculateTotal={calculateTotal}
-      />
-      <Total total={total}
-      />
+        <Form
+        total={total} 
+        calculateTotal={calculateTotal}/>
       </Container>
   );
 }
