@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { currencyTable } from "./currencyTable";
+import currencies from "..currencies";
+import Total from "..Total";
 import "./style.css";
 
 const Form = ({calculateTotal, total}) => {
-    const [currency, setCurrency] = useState(currencyTable[0].symbol);
-    const [sum, setSum] = useState("");
+    const [currency, setCurrency] = useState("");
+    const [sum, setSum] = useState(currencies[0].symbol);
     
-    const onSubmit = (event) => {
+    
+    const onFormSubmit = (event) => {
         event.preventDefault();
         calculateTotal(currency, sum);
+        setSum("");
     }
      
     return (
-    <form className="form" onSubmit={onSubmit}>
+    <form className="form" onSubmit={onFormSubmit}>
         <fieldset className="form__fieldset">
             <legend className="form__legend">
                 Przelicznik walut
@@ -42,7 +45,7 @@ const Form = ({calculateTotal, total}) => {
                         value={currency}
                         onChange={({target}) => setCurrency(target.value)}
                     >
-                        {currencyTable.map((currency => (
+                        {currencies.map((currency => (
                             <option
                             key={currency.symbol}
                             value={currency.symbol}
@@ -52,16 +55,15 @@ const Form = ({calculateTotal, total}) => {
                         )))}
                     </select>
                 </label>
-            </p>
-            <p className="container__issue">
+                <p className="container__issue">
                 *kurs walut z dnia 10 marca 2023 r.
+                </p>
             </p>
             <p>
             <button className="button">Przelicz</button>
         </p>
         </fieldset>
-            <p className="result">Kwota w polskich złotych (PLN): <strong
-                className="total">0.00</strong></p>
+        <Total total={total} />     
     </form>
     );
 };
