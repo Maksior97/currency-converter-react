@@ -62,8 +62,10 @@ const Form = ({calculateTotal, total}) => {
             <p>
             <button className="button">Przelicz</button>
         </p>
-        </fieldset>
+        <p className="result">
         <Total total={total} />     
+        </p>
+        </fieldset>
     </form>
     );
 };
