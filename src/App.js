@@ -7,7 +7,7 @@ function App() {
   const [total, setTotal] = useState();
   
   const calculateTotal = (currency, sum) => {
-     const rate = currencies.find(({symbol}) => symbol === currency);
+     const rate = currencies.find(({symbol}) => symbol === currency).rate;
 
     setTotal({
       targetSum: sum * rate,
