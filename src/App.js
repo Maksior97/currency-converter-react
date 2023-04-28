@@ -6,8 +6,8 @@ import currencies from "./currencies";
 function App() {
   const [total, setTotal] = useState();
   
-  const calculateTotal = (sum, currency) => {
-     const rate = currencies.find(({symbol}) => symbol === currency).rate;
+  const calculateTotal = (currency, sum) => {
+     const rate = currencies.find(({symbol}) => symbol === currency);
 
     setTotal({
       targetSum: sum * rate,

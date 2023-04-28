@@ -62,9 +62,9 @@ const Form = ({calculateTotal, total}) => {
             <p>
             <button className="button">Przelicz</button>
         </p>
-        <p className="result">
-        <Total total={total} />     
-        </p>
+        <span className="window__result">
+            <Total total={total} />
+        </span>
         </fieldset>
     </form>
     );
